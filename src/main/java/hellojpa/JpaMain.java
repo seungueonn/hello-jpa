@@ -16,7 +16,7 @@ public class JpaMain {
 
         try {
 
-            List<Member> result = em.createQuery("select m from Member as m", Member.class)
+            List<Member> result = em.createQuery("select m from Member as m", Member.class) //jpql
                     .setFirstResult(1)
                     .setMaxResults(10) //pagination
                     .getResultList();
