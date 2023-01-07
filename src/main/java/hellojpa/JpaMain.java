@@ -17,7 +17,7 @@ public class JpaMain {
         try {
 
             Member member = new Member();
-            member.setId(101L);
+            member.setId(102L);
             member.setName("helloJPA");
 
             System.out.println("======BEFORE======");
