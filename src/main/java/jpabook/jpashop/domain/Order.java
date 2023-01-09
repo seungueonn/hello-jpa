@@ -12,7 +12,8 @@ public class Order {
 
     private Long id;
     @Column(name = "MEMBER_ID")
-    private Long memberId;
+    private Long memberId; // 객체 지향적이지 않음. 관계형 DB 맞춤 설계.
+                        // 참조값이 아니라 외래키를 그대로 가져와서 객체 탐색 불가능
 
     private LocalDateTime orderDate;
 
