@@ -2,7 +2,10 @@
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
              version="2.1">
     <persistence-unit name="hello">
-        <class>hellojpa.Member</class>
+        <class>jpabook.jpashop.domain.Item</class>
+        <class>jpabook.jpashop.domain.Member</class>
+        <class>jpabook.jpashop.domain.Order</class>
+        <class>jpabook.jpashop.domain.OrderItem</class>
         <properties>
             <!-- 필수 속성 -->
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
