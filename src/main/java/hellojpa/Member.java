@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@SequenceGenerator(name="member_seq_generator",
-sequenceName = "member_seq")
+//@SequenceGenerator(name="member_seq_generator",
+//sequenceName = "member_seq")
 //@Table(name="USER")
 public class Member {
 
