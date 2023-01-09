@@ -16,6 +16,17 @@ public class JpaMain {
 
         try {
 
+            Member member = new Member();
+            member.setUsername("C");
+            Member member1 = new Member();
+            Member member2 = new Member();
+            member1.setUsername("D");
+            member2.setUsername("E");
+
+            em.persist(member);
+            em.persist(member1);
+            em.persist(member2);
+
             tx.commit(); //쓰기 지연
 
         } catch (Exception e) {
