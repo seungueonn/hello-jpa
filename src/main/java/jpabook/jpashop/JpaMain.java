@@ -1,5 +1,8 @@
 package jpabook.jpashop;
 
+import jpabook.jpashop.domain.Order;
+import jpabook.jpashop.domain.OrderItem;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -16,8 +19,20 @@ public class JpaMain {
 
         try {
 
-            tx.commit();
+            // 단방향 -> 할 수 있으면 최대한 단방향으로 해라
+//            Order order = new Order();
+//            em.persist(order);
 
+//            OrderItem orderItem = new OrderItem();
+//            orderItem.setOrder(order);
+//            em.persist(orderItem);
+
+            // 양방향 -> 근데 또 실무는 JPQL로 하려면 양방향 ..
+            Order order = new Order();
+            order.addOrderItem(new OrderItem());
+
+
+            tx.commit();
         } catch (Exception e) {
             tx.rollback();
         } finally {
