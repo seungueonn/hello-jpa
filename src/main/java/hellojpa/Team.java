@@ -15,6 +15,11 @@ public class Team {
     @OneToMany(mappedBy = "team") // mappedBy :: member객체의 team변수에 매핑 되어 있다.
     private List<Member> members = new ArrayList<>();
 
+    public void addMember(Member member) {
+        member.setTeam(this);
+        members.add(member);
+    }
+
     public List<Member> getMembers() {
         return members;
     }

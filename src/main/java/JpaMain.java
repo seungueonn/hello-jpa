@@ -24,7 +24,8 @@ public class JpaMain {
 
             Member member = new Member();
             member.setName("member1");
-            member.changeTeam(team);   // **
+//            member.changeTeam(team);   // **
+            team.addMember(member);     // changeTeam과 같은 내용. 연관관계 주인은 같음. 둘 중 하나만 하면 됨
             em.persist(member);
 
 //            team.getMembers().add(member); // ** 를 하지 않으면, 아까 persist(team)된
