@@ -5,6 +5,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.util.List;
 
 public class JpaMain {
 
@@ -23,8 +24,31 @@ public class JpaMain {
 
             Member member = new Member();
             member.setName("member1");
-            member.setTeam(team);   //단방향 연관관계 설정, 참조 저장
+            member.changeTeam(team);   // **
             em.persist(member);
+
+//            team.getMembers().add(member); // ** 를 하지 않으면, 아까 persist(team)된
+                                            // team 객체 그대로 (list 비어있는 상태).
+                                            // -> Member.setTeam 메소드에 편의 메소드 추가 -> setTeam -> changeTeam
+
+            // TODO : 따라서, 양방향 연관관계 세팅하면, 양쪽에다가 값을 다 입력해야함
+
+//            em.flush();
+//            em.clear();
+
+            Team findTeam = em.find(Team.class, team.getId());  // 1차 캐시
+            List<Member> members = findTeam.getMembers();
+
+            System.out.println("==========");
+            for (Member m : members) {
+                System.out.println("m = " + m.getName());
+            }
+            System.out.println("==========");
+
+
+
+
+
 
             tx.commit();
 
