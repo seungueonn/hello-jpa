@@ -8,6 +8,7 @@
 <!--        <class>jpabook.jpashop.domain.OrderItem</class>-->
         <class>hellojpa.Member</class>
         <class>hellojpa.Team</class>
+        <class>hellojpa.Locker</class>
 
         <properties>
             <!-- 필수 속성 -->
