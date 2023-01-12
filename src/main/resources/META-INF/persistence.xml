@@ -9,6 +9,8 @@
         <class>hellojpa.Member</class>
         <class>hellojpa.Team</class>
         <class>hellojpa.Locker</class>
+        <class>hellojpa.MemberProduct</class>
+        <class>hellojpa.Product</class>
 
         <properties>
             <!-- 필수 속성 -->
