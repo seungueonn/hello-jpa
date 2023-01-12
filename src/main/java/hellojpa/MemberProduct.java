@@ -16,9 +16,9 @@ public class MemberProduct {
     @ManyToOne
     @JoinColumn(name = "PRODUCT_ID")
     private Product product;
-
+    
     private int count;
     private int price;
-
-    private LocalDateTime orderDateTime;
+    
+    private LocalDateTime localDateTime;
 }
