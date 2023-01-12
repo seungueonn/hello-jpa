@@ -18,15 +18,26 @@ public class JpaMain {
 
         try {
 
-            Team team = new Team();
-            team.setName("TeamA");
-            em.persist(team);
-
             Member member = new Member();
             member.setName("member1");
-//            member.changeTeam(team);   // **
-            team.addMember(member);     // changeTeam과 같은 내용. 연관관계 주인은 같음. 둘 중 하나만 하면 됨
+
             em.persist(member);
+
+            Team team = new Team();
+            team.setName("teamA");
+            team.getMembers().add(member);
+
+            em.persist(team);
+
+//            Team team = new Team();
+//            team.setName("TeamA");
+//            em.persist(team);
+//
+//            Member member = new Member();
+//            member.setName("member1");
+////            member.changeTeam(team);   // **
+//            team.addMember(member);     // changeTeam과 같은 내용. 연관관계 주인은 같음. 둘 중 하나만 하면 됨
+//            em.persist(member);
 
 //            team.getMembers().add(member); // ** 를 하지 않으면, 아까 persist(team)된
                                             // team 객체 그대로 (list 비어있는 상태).

@@ -12,11 +12,13 @@ public class Team {
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy = "team") // mappedBy :: member객체의 team변수에 매핑 되어 있다.
+//    @OneToMany(mappedBy = "team") // mappedBy :: member객체의 team변수에 매핑 되어 있다.
+    @OneToMany
+    @JoinColumn(name = "TEAM_ID")
     private List<Member> members = new ArrayList<>();
 
     public void addMember(Member member) {
-        member.setTeam(this);
+//        member.setTeam(this);
         members.add(member);
     }
 
