@@ -4,7 +4,9 @@ import javax.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+//@Inheritance(strategy = InheritanceType.SINGLE_TABLE) // :: 단일 테이블 전략
 @Table(name = "_Item")
+@DiscriminatorColumn // DTYPE :: 상속 관계 명시
 public class Item {
 
     @Id
