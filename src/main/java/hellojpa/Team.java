@@ -7,29 +7,29 @@ import java.util.List;
 @Entity
 public class Team extends BaseEntity{
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "TEAM_ID")
     private Long id;
     private String name;
 
-//    @OneToMany(mappedBy = "team") // mappedBy :: member객체의 team변수에 매핑 되어 있다.
-    @OneToMany
-    @JoinColumn(name = "TEAM_ID")
-    private List<Member> members = new ArrayList<>();
-
-    public void addMember(Member member) {
-//        member.setTeam(this);
-        members.add(member);
-    }
-
-    public List<Member> getMembers() {
-        return members;
-    }
-
-    public void setMembers(List<Member> members) {
-        this.members = members;
-    }
-
+////    @OneToMany(mappedBy = "team") // mappedBy :: member객체의 team변수에 매핑 되어 있다.
+//    @OneToMany
+//    @JoinColumn(name = "TEAM_ID")
+//    private List<Member> members = new ArrayList<>();
+//
+//    public void addMember(Member member) {
+////        member.setTeam(this);
+//        members.add(member);
+//    }
+//
+//    public List<Member> getMembers() {
+//        return members;
+//    }
+//
+//    public void setMembers(List<Member> members) {
+//        this.members = members;
+//    }
+//
     public Long getId() {
         return id;
     }

@@ -23,57 +23,47 @@ public class JpaMain {
 
         try {
 
-            Member member = new Member();
-            member.setName("hello");
+            Team team = new Team();
+            team.setName("teamA");
+            em.persist(team);
 
-            em.persist(member);
+            Member member1 = new Member();
+            member1.setName("member1");
+            member1.setTeam(team);
+            em.persist(member1);
 
             em.flush();
             em.clear();
 
-            //application clear 와 같은 의미
-//          Member findMember = em.find(Member.class, member.getId());
+            Member m = em.find(Member.class, member1.getId());
 
-            Member findMember = em.getReference(Member.class, member.getId()); // 가짜(프록시) 엔티티 객체 조회
-            System.out.println("findMember = " + findMember.getId());
-            System.out.println("findMember = " + findMember.getName()); // 레퍼런스에 없네? 하고 select 쿼리 날림
-            // findMember는 계속 프록시 객체 프록시 유지.
-            //
-            em.flush();
-            em.clear();
+            List<Member> members = em.createQuery("select m from Member m", Member.class)
+                    .getResultList();
 
-            System.out.println("findMember.getClass() = " + findMember.getClass());
-            System.out.println("isLoaded=" + emf.getPersistenceUnitUtil().isLoaded(findMember));
+            // Member 쿼리 + EAGER 즉시 가져오려고 쿼리 더
+            // SQL : select * from Member
+            // SQL : select * from team where TEAM_ID = xxx
 
-            findMember.getName(); // 강제 초기화
-            System.out.println("isLoaded=" + emf.getPersistenceUnitUtil().isLoaded(findMember));
+            System.out.println("m.getTeam().getClass() = " + m.getTeam().getClass());
 
-            Hibernate.initialize(findMember); // 강제 초기화
-
+            System.out.println("=======query========");
+            m.getTeam().getName();
+            System.out.println("=======query========");
             tx.commit();
 
 
 
         } catch (Exception e) {
             tx.rollback();
+            e.printStackTrace();
         } finally {
             em.close();
+            emf.close();
+
         }
-        emf.close();
 
     }
 
-    // Member를 조회할 때 Team도 함께 조회해야 할까?
-    private static void printMember(Member member) {
-        System.out.println("member.getName() = " + member.getName());
-    }
-
-    private static void printMemberAndTeam(Member member) {
-        String userName = member.getName();
-        System.out.println("userName = " + userName);
-        Team team = member.getTeam();
-        System.out.println("team = " + team.getName());
-    }
 
 
 }
