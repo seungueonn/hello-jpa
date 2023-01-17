@@ -34,6 +34,12 @@ public class JpaMain {
 //            em.persist(child1);
 //            em.persist(child2); // -> parent가 child를 관리, parent 할 때 child도 Persist 할 수 있도록 -> CASCADE
 
+            em.flush();
+            em.clear();
+
+            Parent findParent = em.find(Parent.class, parent.getId());
+            findParent.getChildList().remove(0); // 고아객체 :: orphanRemoval = true 하면 같이 삭제됨
+
             tx.commit();
 
 
