@@ -23,11 +23,19 @@ public class JpaMain {
 
         try {
 
-            Member member = new Member();
-            member.setName("hello");
-            member.setAddress(new Address("city", "street", "zipcode"));
+            Address address = new Address("city", "street", "10000");
 
-            em.persist(member);
+            Member member1 = new Member();
+            member1.setName("member1");
+            member1.setWorkAddress(address);
+            em.persist(member1);
+
+
+//            member1.getWorkAddress().setCity("newCity"); // embedded 타입 같은 값 타입을 여러 엔티티에서 공유하면 위험함
+            // -> set method를 private 으로 변경
+            // -> 변경하려면 그냥 새로 통으로 갈아야함
+
+            tx.commit();
         } catch (Exception e) {
             tx.rollback();
             e.printStackTrace();
