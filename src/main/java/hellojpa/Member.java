@@ -1,13 +1,14 @@
 package hellojpa;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.locks.Lock;
 
 @Entity
 @Table(name = "member")
-public class Member extends BaseEntity {
+public class Member  {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -15,43 +16,18 @@ public class Member extends BaseEntity {
     @Column(name = "USERNAME")
     private String name;
 
-    @ManyToOne(fetch=FetchType.EAGER) // 프록시 객체로 조회
-    @JoinColumn(name = "TEAM_ID")
-    private Team team;
-//
-//    @OneToOne
-//    @JoinColumn(name = "LOCKER_ID")
-//    private Locker locker;
-//
-    public Team getTeam() {
-        return team;
-    }
+    //Period
+    @Embedded
+    private Period period;
+    // address
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride( name="city",column = @Column(name="HOME_CITY")),
+            @AttributeOverride( name="street",column = @Column(name="HOME_STREET")),
+            @AttributeOverride( name="zipcode",column = @Column(name="HOME_ZIPCODE"))})
+    private Address homeAddress;
+    private Address workAddress;
 
-    public void setTeam(Team team) {
-        this.team = team;
-    }
-//
-//    public Locker getLocker() {
-//        return locker;
-//    }
-//
-//    public void setLocker(Locker locker) {
-//        this.locker = locker;
-//    }
-//
-//    public List<MemberProduct> getMemberProducts() {
-//        return memberProducts;
-//    }
-//
-//    public void setMemberProducts(List<MemberProduct> memberProducts) {
-//        this.memberProducts = memberProducts;
-//    }
-//
-//    //    @ManyToMany
-////    @JoinTable(name = "MEMBER_PRODUCT") // 다대다
-//    @OneToMany(mappedBy = "member")
-//    private List<MemberProduct> memberProducts = new ArrayList<>();
-//
     public Long getId() {
         return id;
     }
@@ -67,10 +43,14 @@ public class Member extends BaseEntity {
     public void setName(String name) {
         this.name = name;
     }
-//
-//
-////    public void changeTeam(Team team) {
-////        this.team = team;
-////        team.getMembers().add(this); // 연관관계 편의 메소드
-////    }
+
+    public Period getPeriod() {
+        return period;
+    }
+
+    public void setPeriod(Period period) {
+        this.period = period;
+    }
+
+
 }

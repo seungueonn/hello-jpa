@@ -23,26 +23,11 @@ public class JpaMain {
 
         try {
 
-            Child child1 = new Child();
-            Child child2 = new Child();
+            Member member = new Member();
+            member.setName("hello");
+            member.setAddress(new Address("city", "street", "zipcode"));
 
-            Parent parent = new Parent();
-            parent.addChild(child1);
-            parent.addChild(child2);
-
-            em.persist(parent);
-//            em.persist(child1);
-//            em.persist(child2); // -> parent가 child를 관리, parent 할 때 child도 Persist 할 수 있도록 -> CASCADE
-
-            em.flush();
-            em.clear();
-
-            Parent findParent = em.find(Parent.class, parent.getId());
-            findParent.getChildList().remove(0); // 고아객체 :: orphanRemoval = true 하면 같이 삭제됨
-
-            tx.commit();
-
-
+            em.persist(member);
         } catch (Exception e) {
             tx.rollback();
             e.printStackTrace();
