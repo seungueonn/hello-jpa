@@ -9,6 +9,7 @@
         <class>hellojpa.Member</class>
         <class>hellojpa.Address</class>
         <class>hellojpa.Period</class>
+        <class>hellojpa.AddressEntity</class>
 <!--        <class>hellojpa.Team</class>-->
 <!--        <class>hellojpa.Locker</class>-->
 <!--        <class>hellojpa.MemberProduct</class>-->
