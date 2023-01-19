@@ -10,6 +10,7 @@ import static javax.persistence.FetchType.LAZY;
 public class Category extends BaseEntity{
 
     @Id @GeneratedValue
+    @Column(name = "CATEGORY_ID")
     private Long id;
 
     private String name;
