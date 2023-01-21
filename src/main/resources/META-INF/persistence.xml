@@ -3,6 +3,11 @@
              version="2.1">
     <persistence-unit name="hello">
 <!--        <class>jpabook.jpashop.domain.Item</class>-->
+        <class>jpql.Member</class>
+        <class>jpql.Order</class>
+        <class>jpql.Product</class>
+
+        <class>jpql.Team</class>
 
 
         <properties>

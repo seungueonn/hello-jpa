@@ -5,24 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b662f3a8-1a4e-4f68-8024-fd8cc2326748" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/jpql/Address.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/jpql/JpaMain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/jpql/Member.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/jpql/MemberDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/jpql/Order.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/jpql/Product.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/jpql/Team.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hellojpa/Address.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hellojpa/AddressEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hellojpa/Album.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hellojpa/BaseEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hellojpa/Book.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hellojpa/Child.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hellojpa/Item.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hellojpa/JpaMain.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hellojpa/Locker.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hellojpa/Member.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hellojpa/MemberProduct.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hellojpa/Movie.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hellojpa/Parent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hellojpa/Period.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hellojpa/Product.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hellojpa/Team.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hellojpa/ValueMain.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -87,7 +77,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.JpaMain">
+  <component name="RunManager" selected="Application.jpql.JpaMain">
     <configuration name="JpaMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="hellojpa.JpaMain" />
       <module name="jpa.main" />
@@ -134,8 +124,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="jpql.JpaMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="jpql.JpaMain" />
+      <module name="jpa.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="jpql.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.jpql.JpaMain" />
         <item itemvalue="Application.JpaMain" />
         <item itemvalue="Application.ValueMain" />
       </list>
