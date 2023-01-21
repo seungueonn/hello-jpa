@@ -24,20 +24,10 @@ public class JpaMain {
 
         try {
 
-            Member member = new Member();
-            member.setName("member1");
-            member.setWorkAddress(new Address("city", "street", "1999"));
+            List<Member> result = em.createQuery(
+                    "select m From Member m where m.name like '%kim%'",Member.class
+            ).getResultList();
 
-            member.getFavoriteFoods().add("chicken");
-            member.getFavoriteFoods().add("pizza");
-
-            member.getAddressHistory().add(new AddressEntity("oldCity1", "oldStreet1", "1939"));
-            member.getAddressHistory().add(new AddressEntity("oldCity2", "oldStreet2", "1939"));
-
-            em.persist(member);
-
-            em.flush();
-            em.clear();
 
             tx.commit();
         } catch (Exception e) {
