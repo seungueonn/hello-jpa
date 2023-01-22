@@ -29,26 +29,18 @@ public class JpaMain {
 
             em.flush();
             em.clear();
-            //enum type은 패키지까지 다 넣어주어야함
-//            String query = "select m.username,'HELLO',true  From Member m " +
-//                    "where m.type=jpql.MemberType.ADMIN";
 
-            // 아니면 setParameter 사용
-            String query = "select m.username,'Hello',true From Member m " +
-                    "where m.type = :userType";
-            List<Object[]> resultList = em.createQuery(query)
-                    .setParameter("userType",MemberType.ADMIN)
-                    .getResultList();
+            String query = "select " +
+                    "case   when m.age <= 10 then '학생 요금'" +
+                      "     when m.age >= 60 then '경로 요금'" +
+                            "else '일반 요금' " +
+                    "end " +
+                    "from Member m";
 
-            for (Object[] o : resultList) {
-                System.out.println("o = " + o[0].toString());
-                System.out.println("o = " + o[1].toString());
-                System.out.println("o = " + o[2].toString());
-            }
+            em.createQuery(query);
 
-            // Entity 타입 조회
-//            em.createQuery("select i from Item i where type(i) = Book",Item.class)
-
+            String query1 = "select coalesce(m.username,'이름 없는 회원') from Member m";
+            em.createQuery(query1);
 
             tx.commit();
         } catch (Exception e) {
