@@ -15,32 +15,26 @@ public class JpaMain {
         try {
 
 
-            Team team = new Team();
-            team.setName("teamA");
-            em.persist(team);
+            Member member1 = new Member();
+            member1.setUsername("관리자1");
+            em.persist(member1);
 
-            Member member = new Member();
-            member.setUsername("member1");
-            member.setAge(10);
-            member.setTeam(team);
-            member.setType(MemberType.ADMIN);
-            em.persist(member);
+
+            Member member2 = new Member();
+            member2.setUsername("관리자2");
+            em.persist(member2);
 
 
             em.flush();
             em.clear();
 
-            String query = "select " +
-                    "case   when m.age <= 10 then '학생 요금'" +
-                      "     when m.age >= 60 then '경로 요금'" +
-                            "else '일반 요금' " +
-                    "end " +
-                    "from Member m";
-
-            em.createQuery(query);
-
-            String query1 = "select coalesce(m.username,'이름 없는 회원') from Member m";
-            em.createQuery(query1);
+            // concat,substring,trim
+//            String query = "select concat('a', 'b') From Member m ";
+//            String query = "select substring(?????? ) From Member m ";
+//            String query = "select locate('de', 'abcdef') From Member m "; -> return 4
+          String query = "";
+            List<String> result = em.createQuery(query, String.class)
+                    .getResultList();
 
             tx.commit();
         } catch (Exception e) {
