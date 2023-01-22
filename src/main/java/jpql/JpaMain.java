@@ -1,9 +1,6 @@
 package jpql;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.persistence.*;
 import java.util.List;
 
 public class JpaMain {
@@ -26,30 +23,31 @@ public class JpaMain {
             member.setUsername("member1");
             member.setAge(10);
             member.setTeam(team);
+            member.setType(MemberType.ADMIN);
             em.persist(member);
 
 
             em.flush();
             em.clear();
+            //enum type은 패키지까지 다 넣어주어야함
+//            String query = "select m.username,'HELLO',true  From Member m " +
+//                    "where m.type=jpql.MemberType.ADMIN";
 
-            String query = "select m from Member m left  join m.team t";
-            String query2 = "select m from Member m , Team t where m.username = t.name";
-            List<Member> result = em.createQuery(query, Member.class)
+            // 아니면 setParameter 사용
+            String query = "select m.username,'Hello',true From Member m " +
+                    "where m.type = :userType";
+            List<Object[]> resultList = em.createQuery(query)
+                    .setParameter("userType",MemberType.ADMIN)
                     .getResultList();
 
-            // 외부 조인에서 team name이 teamA인 경우 (on 이용 - 조인 대상 필터링)
-            String queryOn = "select m from Member m left join m.team t on t.name='teamA'";
-             em.createQuery(queryOn, Member.class)
-                    .getResultList();
+            for (Object[] o : resultList) {
+                System.out.println("o = " + o[0].toString());
+                System.out.println("o = " + o[1].toString());
+                System.out.println("o = " + o[2].toString());
+            }
 
-             // 외부 조인에서 team name = username 인 경우 (on 이용 - 연관관계 외부 조인)
-            String queryNew = "select m from Member m left join m.team t on t.name=m.username";
-
-            // Paging
-//            List<Member> result = em.createQuery("select m from Member m order by m.age desc ",Member.class)
-//                    .setFirstResult(1) // 시작 페이지 조회
-//                    .setMaxResults(10) // 조회할 데이터 수
-//                    .getResultList();
+            // Entity 타입 조회
+//            em.createQuery("select i from Item i where type(i) = Book",Item.class)
 
 
             tx.commit();
